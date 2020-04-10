@@ -261,7 +261,7 @@ def testDicoSpe(tuple):
 							if nom_enc.hexdigest() == mdp:
 								print("good",nom_bis.upper(), mdp)
 
-		if nom_bis.count('*') == 4 :
+		if nom_bis.count('*') == 5 :
 			tmp1 = nom_bis.index("*")
 			nom_bis = nom_bis.replace("*","-",1)
 			booltest = True
@@ -387,7 +387,7 @@ def testPrenomsSpe(tuple):
 						if nom_enc.hexdigest() == mdp:
 							print("good",nom_bis.upper(), mdp)
 
-	if nom_bis.count('*') == 4 :
+	if nom_bis.count('*') == 5 :
 		tmp1 = nom_bis.index("*")
 		nom_bis = nom_bis.replace("*","-",1)
 		booltest = True
@@ -523,12 +523,12 @@ tuples_mdp=ini()
 
 
 #fonction prenoms
-for i in range(0,20):
-	testPrenomsSpe(tuples_mdp[i])
+'''for i in range(0,20):
+	testPrenomsSpe(tuples_mdp[i])'''
 
 #fonction M N dico
-'''for i in range(0,20):
-	testDicoSpe(tuples_mdp[i])'''
+for i in range(0,20):
+	testDicoSpe(tuples_mdp[i])
 
 #fonction M dico N
 '''for i in range(0,20):
