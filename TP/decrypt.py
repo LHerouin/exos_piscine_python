@@ -463,11 +463,18 @@ def testPrenomsN(tuple):
 	prenom = tuple_mdp[0]
 	
 	#test
-	for i in range(0,10000):
-		prenom_enc = hashlib.md5((prenom.lower()+str(i)).encode())
+	f = io.open("dico_animaux.txt", mode="r", encoding="utf-8")
+	#recup mdp hashé
+	tuple_mdp = tuple.split(';')
+	mdp = tuple_mdp[1]
+	#pour chaque ligne du fichier
+	for line in f: 
+		#on récupère la ligne avec la fonction strip
+		ligne = line.strip()
+		prenom_enc = hashlib.md5((prenom.lower()+ligne.upper()).encode())
 		if prenom_enc.hexdigest() == mdp:
-			print("good",(prenom.lower()+str(i)), mdp)
-	
+			print("good",(prenom.lower()+ligne), mdp)
+	f.close()
 
 # fonction test prenoms+noms
 def testPN(tuple):
@@ -522,13 +529,18 @@ def testNEP(tuple):
 tuples_mdp=ini()
 
 
+
+#fonction prenoms
+for i in range(0,20):
+	testPrenomsN(tuples_mdp[i])
+
 #fonction prenoms
 '''for i in range(0,20):
 	testPrenomsSpe(tuples_mdp[i])'''
 
 #fonction M N dico
-for i in range(0,20):
-	testDicoSpe(tuples_mdp[i])
+'''for i in range(0,20):
+	testDicoSpe(tuples_mdp[i])'''
 
 #fonction M dico N
 '''for i in range(0,20):
